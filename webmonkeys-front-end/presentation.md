@@ -3,7 +3,7 @@ author:
   name: Neelabh Gupta
   twitter: neelabhg
   url: http://neelabhgupta.com
-output: presentation.html
+output: index.html
 controls: false
 template: template.mustache
 layout: layout.mustache
