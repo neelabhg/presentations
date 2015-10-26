@@ -1,0 +1,697 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Modern Front-end Development</title>
+  <style type="text/css">
+    body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: #f7f7f7;
+  font-size: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+}
+
+.slide-content {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+
+  font-weight: 200;
+  font-size: 200%;
+  line-height: 1.375;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.arrow {
+  width: 0; height: 0;
+  border: 30px solid #333;
+  float: left;
+  margin-right: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  border-left-width: 0;
+  border-right-width: 50px;
+}
+
+.next {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+
+  border-left-width: 50px;
+  border-right-width: 0;
+}
+
+.prev:hover {
+  border-right-color: #888;
+  cursor: pointer;
+}
+
+.next:hover {
+  border-left-color: #888;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.2;
+  text-align: center;
+  margin: 170px 0 0;
+}
+
+h2 {
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 140%;
+  line-height: 1.2;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+ul {
+  padding: 20px 0 0 60px;
+  font-weight: 200;
+  line-height: 1.375;
+}
+
+.author h1 {
+  font-size: 170%;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.author h3 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 95%;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #44a4dd;
+}
+
+a:hover {
+  color: #66b5ff;
+}
+
+pre {
+  font-size: 60%;
+  line-height: 1.3;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #b4b4b4;
+
+  -webkit-transition: width 0.05s ease-out;
+  -moz-transition: width 0.05s ease-out;
+  -o-transition: width 0.05s ease-out;
+  transition: width 0.05s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 850px) {
+
+  body {
+    font-size: 70%;
+  }
+
+  .slide-content {
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 120px;
+  }
+
+  .prev, .prev:hover {
+    border-right-color: rgba(135, 135, 135, 0.5);
+  }
+
+  .next, .next:hover {
+    border-left-color: rgba(135, 135, 135, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 50%;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    padding: 10px;
+    margin-top: 10px;
+    height: 340px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+  }
+
+  .hidden {
+    display: inline;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    float: none !important;
+    overflow: visible;
+    background: none !important;
+    font-size: 52%;
+  }
+
+  .progress, .controls {
+    display: none;
+  }
+
+  .slide {
+    position: static;
+  }
+
+  .slide-content {
+    border: 1px solid #222;
+    margin-top: 0;
+    margin-bottom: 40px;
+    height: 3.5in;
+    overflow: visible;
+  }
+
+  .slide:nth-child(even) {
+    /* 2 slides per page */
+    page-break-before: always;
+  }
+}
+
+/*
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+code, pre {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: auto;
+  padding: 6px 10px;
+}
+
+code {
+  padding: 0 5px;
+}
+
+pre>code {
+  margin: 0; padding: 0;
+  border: none;
+  background: transparent;
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide " id="slide-1">
+    <section class="slide-content"><h1 id="front-end-development">Front-end Development</h1>
+<h2 id="tools-frameworks-examples-and-suggestions-for-modern-front-end-development">Tools, frameworks, examples and suggestions for modern front-end development</h2>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-2">
+    <section class="slide-content"><h3 id="who-am-i-">Who am I?</h3>
+<ul>
+<li>Computer Engineering, Class of 2015</li>
+<li>Technical lead on the <a href="http://cs-education.github.io/sys/">System Programming Learning Environment</a>
+project used in CS 241</li>
+<li><a href="https://github.com/neelabhg">Several projects</a> using a variety of languages, tools, frameworks</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-3">
+    <section class="slide-content"><h3 id="why-am-i-here-">Why am I here?</h3>
+<p><a href="https://medium.com/tastejs-blog/yet-another-framework-syndrome-yafs-cf5f694ee070">Yet Another Framework Syndrome (YAFS)</a>:</p>
+<blockquote>
+<p>&quot;Almost every day, we see new libraries, frameworks and tools being released in the JavaScript community - many of
+   which simply reinvent the wheel.&quot;</p>
+</blockquote>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-4">
+    <section class="slide-content"><h3 id="why-am-i-here-">Why am I here?</h3>
+<blockquote>
+<p>&quot;If you&#39;re an experienced developer speaking to someone stuck on a decision, try to help them simplify their options.
+  It&#39;s a freeing experience and may help narrow down their choices to something that doesn&#39;t feel so daunting.
+  Even taking a few off the potential list can give them an opportunity to get more clarity and choose something
+  they can at least evaluate before making a final decision.&quot;<br>  -- <a href="https://the-pastry-box-project.net/addy-osmani/2014-January-19">Addy Osmani, <em>Front-end Choice Paralysis</em></a></p>
+</blockquote>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-5">
+    <section class="slide-content"><h3 id="writing-client-side-applications">Writing client-side applications</h3>
+<ul>
+<li>Document: HTML</li>
+<li>Styling: CSS (Sass, LESS)</li>
+<li>Scripting: JavaScript (CoffeeScript, TypeScript)</li>
+<li>Tools (building, testing, deploying)</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-6">
+    <section class="slide-content"><h3 id="frameworks">Frameworks</h3>
+<ul>
+<li>Help manage complexity and write organized, maintainable, reusable code</li>
+<li>Take care of common concerns (DOM, templates, routing, etc)</li>
+<li>Provide best-practices in the form of conventions</li>
+<li>MVC (or MVVM or MV*) helps prevent <a href="https://github.com/neelabhg/spelling-bee-phonegap/blob/master/www/js/app.js">this</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-7">
+    <section class="slide-content"><h3 id="todomvc">TodoMVC</h3>
+<ul>
+<li><a href="http://todomvc.com/">http://todomvc.com/</a> and <a href="https://github.com/tastejs/todomvc">https://github.com/tastejs/todomvc</a></li>
+<li>The same Todo application implemented in most of the popular JavaScript MV* frameworks</li>
+<li>Can be used study the syntax for defining models, views, controllers
+and classes in different frameworks to see how it feels using it first-hand</li>
+<li>Helps find what well-developed frameworks match your mental model of application architecture</li>
+<li>Not meant to showcase all features of a given framework</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-8">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<ul>
+<li>A browser-based systems programming learning tool for CS 241 and possibly other uses</li>
+<li>Open source; Uses <a href="https://github.com/cs-education/sysbuild">GitHub</a> for collaboration</li>
+<li>Purely client-side; hosted on <a href="https://pages.github.com/">GitHub Pages</a></li>
+<li>Written in JavaScript (ES5, porting to ES6 soon)</li>
+<li>Uses HTML, CSS and <a href="http://sass-lang.com/">Sass</a></li>
+<li><a href="http://cs-education.github.io/sys/">Live demo</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-9">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="architecture">Architecture</h4>
+<p><img src="LIAB_architecture_overview_small.png" alt="LIAB_architecture_overview"></p>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-10">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="libraries">Libraries</h4>
+<ul>
+<li><a href="http://knockoutjs.com/">KnockoutJS</a> - Model-View-View-Model framework with two-way data binding</li>
+<li><a href="http://getbootstrap.com/">Bootstrap</a> - User interface and design components</li>
+<li><a href="http://sammyjs.org/">Sammy.js</a> - URL routing</li>
+<li><a href="http://jquery.com/">jQuery</a> - DOM manipulation and utility functions</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-11">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="tools">Tools</h4>
+<ul>
+<li><a href="http://bower.io/">Bower</a> - Dependency management</li>
+<li><a href="https://travis-ci.org/">Travis CI</a> - Continuous Integration</li>
+<li><a href="http://gruntjs.com/">Grunt</a> - Task runner (building, testing, deploying)
+(<a href="https://github.com/cs-education/sysbuild/blob/master/Gruntfile.js">Gruntfile</a>)</li>
+<li><a href="http://yeoman.io/">Yeoman</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-12">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="libraries-vs-frameworks">Libraries vs Frameworks</h4>
+<ul>
+<li>Favor small libraries over complete &quot;all-in-one&quot; frameworks like AngularJS</li>
+<li>Frameworks have a high learning curve and impose a certain way of writing code</li>
+<li>Difficult to implement features not available in or compatible with the framework</li>
+<li><a href="https://github.com/cs-education/sysbuild/issues/102">Discussion about an AngularJS port</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-13">
+    <section class="slide-content"><h3 id="resources">Resources</h3>
+<ul>
+<li><a href="http://rmurphey.com/blog/2015/03/23/a-baseline-for-front-end-developers-2015/">A Baseline for Front-End [JS] Developers: 2015</a></li>
+<li><a href="https://speakerdeck.com/addyosmani/front-end-tooling-workflows">Front-end Tooling Workflows by Addy Osmani (2014)</a></li>
+<li><a href="http://code.tutsplus.com/tutorials/essential-tools-for-a-modern-front-end-development-workflow--pre-66083">Essential Tools For A Modern Front-end Development Workflow (2013)</a></li>
+<li><a href="https://github.com/bolshchikov/js-must-watch">Must-watch videos about javascript</a></li>
+<li><a href="https://github.com/sorrycc/awesome-javascript">A collection of awesome browser-side JavaScript libraries, resources and shiny things</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><div class="author">
+  <h1 class="name">Neelabh Gupta</h1>
+    <h3 class="twitter">
+      <a href="http://twitter.com/@neelabhg">@neelabhg</a>
+    </h3>
+    <h3 class="url">
+      <a href="http://neelabhgupta.com">http://neelabhgupta.com</a>
+    </h3>
+</div>
+</section>
+  </div>
+
+
+
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  window.history.replaceState({} , null, '#' + currentPosition());
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+/**
+ * Determines whether or not we are currently in full screen mode
+ */
+function isFullScreen() {
+  return document.fullscreenElement ||
+         document.mozFullScreenElement ||
+         document.webkitFullscreenElement ||
+         document.msFullscreenElement;
+}
+
+/**
+ * Toggle fullScreen mode on document element.
+ * Works on chrome (>= 15), firefox (>= 9), ie (>= 11), opera(>= 12.1), safari (>= 5).
+ */
+function toggleFullScreen() {
+  /* Convenient renames */
+  var docElem = document.documentElement;
+  var doc = document;
+
+  docElem.requestFullscreen =
+      docElem.requestFullscreen ||
+      docElem.msRequestFullscreen ||
+      docElem.mozRequestFullScreen ||
+      docElem.webkitRequestFullscreen.bind(docElem, Element.ALLOW_KEYBOARD_INPUT);
+
+  doc.exitFullscreen =
+      doc.exitFullscreen ||
+      doc.msExitFullscreen ||
+      doc.mozCancelFullScreen ||
+      doc.webkitExitFullscreen;
+
+  isFullScreen() ? doc.exitFullscreen() : docElem.requestFullscreen();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, PgDn - FORWARD
+    // enter - FULLSCREEN
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    } else if (kc === 13) {
+      toggleFullScreen();
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+
+  </script>
+</body>
+</html>
