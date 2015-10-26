@@ -5,8 +5,7 @@ author:
   url: http://neelabhgupta.com
 output: index.html
 controls: false
-template: template.mustache
-layout: layout.mustache
+theme: ../cleaver-theme
 --
 
 # Front-end Development
