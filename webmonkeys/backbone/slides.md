@@ -15,8 +15,6 @@ theme: ../cleaver-theme
 ### Who am I?
 
 * Computer Engineering, Class of 2015
-* Technical lead on the [System Programming Learning Environment](http://cs-education.github.io/sys/)
-  project used in CS 241
 * [Several projects](https://github.com/neelabhg) using a variety of languages, tools, frameworks
 
 --
