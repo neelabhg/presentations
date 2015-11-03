@@ -6,10 +6,18 @@ author:
 output: index.html
 controls: false
 theme: ../cleaver-theme
---
+
+-- title-slide
 
 # Front-end Development
-## Tools, frameworks, examples and suggestions for modern front-end development
+## Tools and frameworks for creating modern web applications
+### ACM @ UIUC - WebMonkeys
+
+#### Neelabh Gupta
+##### October 19, 2015
+
+<img src="../cleaver-theme/acm-uiuc-logo.png" />
+<img src="../cleaver-theme/acm-webmonkeys-logo.png" />
 
 --
 
