@@ -6,9 +6,18 @@ author:
 output: index.html
 controls: false
 theme: ../cleaver-theme
---
+
+-- title-slide
 
 # Intro to Backbone.js
+## Why and how to use one of the most popular front-end JavaScript libraries
+### ACM @ UIUC - WebMonkeys
+
+#### Neelabh Gupta
+##### October 26, 2015
+
+<img src="../cleaver-theme/acm-uiuc-logo.png" />
+<img src="../cleaver-theme/acm-webmonkeys-logo.png" />
 
 --
 
