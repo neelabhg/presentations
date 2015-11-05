@@ -1,4 +1,4 @@
-title: Modern Front-end Development
+title: Starting Front-end Development
 author:
   name: Neelabh Gupta
   twitter: neelabhg
