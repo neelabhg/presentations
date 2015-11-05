@@ -445,11 +445,12 @@ pre .chunk {
   </div>
 
   <div class="slide  title-slide" id="slide-1">
-    <section class="slide-content"><h1 id="front-end-development">Front-end Development</h1>
+    <section class="slide-content"><h1 id="starting-front-end-development">Starting Front-end Development</h1>
 <h2 id="tools-and-frameworks-for-creating-modern-web-applications">Tools and frameworks for creating modern web applications</h2>
 <h3 id="acm-uiuc-webmonkeys">ACM @ UIUC - WebMonkeys</h3>
 <h4 id="neelabh-gupta">Neelabh Gupta</h4>
 <h5 id="october-19-2015">October 19, 2015</h5>
+<h5 id="-slides-revised-november-4-2015-">(slides revised November 4, 2015)</h5>
 <p><img src="../cleaver-theme/acm-uiuc-logo.png" />
 <img src="../cleaver-theme/acm-webmonkeys-logo.png" /></p>
 </section>
@@ -490,50 +491,78 @@ project used in CS 241</li>
 <li>Styling: CSS (Sass, LESS)</li>
 <li>Scripting: JavaScript (CoffeeScript, TypeScript)</li>
 <li>Tools (building, testing, deploying)</li>
+<li>Libraries (MVC frameworks, DOM libraries)</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-6">
-    <section class="slide-content"><h3 id="frameworks">Frameworks</h3>
+    <section class="slide-content"><h3 id="why-use-mv-frameworks-">Why use MV* frameworks?</h3>
 <ul>
 <li>Help manage complexity and write organized, maintainable, reusable code</li>
 <li>Take care of common concerns (DOM, templates, routing, etc)</li>
 <li>Provide best-practices in the form of conventions</li>
-<li>MVC (or MVVM or MV*) helps prevent <a href="https://github.com/neelabhg/spelling-bee-phonegap/blob/master/www/js/app.js">this</a></li>
 </ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-7">
+    <section class="slide-content"><h3 id="why-use-mv-frameworks-">Why use MV* frameworks?</h3>
+<p>MVC (or MVVM or MV*) helps prevent <a href="https://github.com/neelabhg/spelling-bee-phonegap/blob/master/www/js/app.js">this</a>:</p>
+<pre><code class="lang-javascript">$(<span class="string">"#checkAnswerButton"</span>).off(<span class="string">"click"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    numTries += <span class="number">1</span>;
+    <span class="keyword">if</span> ($(<span class="string">"#wordInput"</span>).val().toLowerCase() === word.word.toLowerCase()) {<span class="comment">//correct answer</span>
+        results[<span class="string">'correctCount'</span>] += <span class="number">1</span>;
+        results.words.push({ word: word.word, result: <span class="string">'correct'</span> });
+        $(<span class="string">"#dialogHeading"</span>).text(<span class="string">"Correct answer!"</span>);
+        $(<span class="string">"#correctWord"</span>).text(word.word);
+        $(<span class="string">"#wordDonePopup"</span>).popup(<span class="string">"open"</span>);
+    } <span class="keyword">else</span> {<span class="comment">//incorrect answer</span>
+        $(<span class="string">"#incorrectAnswerMsg"</span>).show();
+        <span class="keyword">if</span> (numTries === settings.maxTries) {<span class="comment">//max number of tries reached</span>
+            results[<span class="string">'incorrectCount'</span>] += <span class="number">1</span>;
+            results.words.push({ word: word.word, result: <span class="string">'incorrect'</span> });
+            $(<span class="string">"#dialogHeading"</span>).text(<span class="string">"Incorrect answer"</span>);
+            $(<span class="string">"#correctWord"</span>).text(word.word);
+            $(<span class="string">"#wordDonePopup"</span>).popup(<span class="string">"open"</span>);
+        } <span class="keyword">else</span> {
+            $(<span class="string">"#numTriesDisplay"</span>).text(numTries);
+        }
+    }
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-8">
     <section class="slide-content"><h3 id="todomvc">TodoMVC</h3>
 <ul>
-<li><a href="http://todomvc.com/">http://todomvc.com/</a> and <a href="https://github.com/tastejs/todomvc">https://github.com/tastejs/todomvc</a></li>
+<li><a href="http://todomvc.com/">todomvc.com</a> and <a href="https://github.com/tastejs/todomvc">github.com/tastejs/todomvc</a></li>
 <li>The same Todo application implemented in most of the popular JavaScript MV* frameworks</li>
-<li>Can be used study the syntax for defining models, views, controllers
+<li>Can be used to study the syntax for defining models, views, controllers
 and classes in different frameworks to see how it feels using it first-hand</li>
 <li>Helps find what well-developed frameworks match your mental model of application architecture</li>
 <li>Not meant to showcase all features of a given framework</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-8">
+  <div class="slide hidden " id="slide-9">
     <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
 <ul>
-<li>A browser-based systems programming learning tool for CS 241 and possibly other uses</li>
+<li>A browser-based system programming learning tool used in CS 241</li>
 <li>Open source; Uses <a href="https://github.com/cs-education/sysbuild">GitHub</a> for collaboration</li>
 <li>Purely client-side; hosted on <a href="https://pages.github.com/">GitHub Pages</a></li>
 <li>Written in JavaScript (ES5, porting to ES6 soon)</li>
 <li>Uses HTML, CSS and <a href="http://sass-lang.com/">Sass</a></li>
 <li><a href="http://cs-education.github.io/sys/">Live demo</a></li>
 </ul>
-</section>
-  </div>
-  <div class="slide hidden " id="slide-9">
-    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
-<h4 id="architecture">Architecture</h4>
-<p><img src="LIAB_architecture_overview_small.png" alt="LIAB_architecture_overview"></p>
+<p><small>(Note: The project is under active development. This talk refers to the project upto
+<a href="https://github.com/cs-education/sysbuild/tree/2eb401a7c28414c2799426f689b4dbe5ef4fe784">this commit</a>).</small></p>
 </section>
   </div>
   <div class="slide hidden " id="slide-10">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="architecture">Architecture</h4>
+<p><img src="LIAB_architecture_overview.png" width="60%" style="display: block; margin: auto" /></p>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-11">
     <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
 <h4 id="libraries">Libraries</h4>
 <ul>
@@ -544,30 +573,52 @@ and classes in different frameworks to see how it feels using it first-hand</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-11">
+  <div class="slide hidden " id="slide-12">
     <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
 <h4 id="tools">Tools</h4>
 <ul>
+<li><a href="http://yeoman.io/">Yeoman</a> - Initial project scaffolding</li>
 <li><a href="http://bower.io/">Bower</a> - Dependency management</li>
 <li><a href="https://travis-ci.org/">Travis CI</a> - Continuous Integration</li>
-<li><a href="http://gruntjs.com/">Grunt</a> - Task runner (building, testing, deploying)
-(<a href="https://github.com/cs-education/sysbuild/blob/master/Gruntfile.js">Gruntfile</a>)</li>
-<li><a href="http://yeoman.io/">Yeoman</a></li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden " id="slide-12">
-    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
-<h4 id="libraries-vs-frameworks">Libraries vs Frameworks</h4>
-<ul>
-<li>Favor small libraries over complete &quot;all-in-one&quot; frameworks like AngularJS</li>
-<li>Frameworks have a high learning curve and impose a certain way of writing code</li>
-<li>Difficult to implement features not available in or compatible with the framework</li>
-<li><a href="https://github.com/cs-education/sysbuild/issues/102">Discussion about an AngularJS port</a></li>
+<li><a href="http://gruntjs.com/">Grunt</a> - Task runner (building, testing, deploying)</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-13">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="tools-some-grunt-tasks-used-https-github-com-cs-education-sysbuild-blob-030ffef85c67285f2ab5e66855aa5f4fb1b88312-gruntfile-js-">Tools: <a href="https://github.com/cs-education/sysbuild/blob/030ffef85c67285f2ab5e66855aa5f4fb1b88312/Gruntfile.js">Some Grunt tasks used</a></h4>
+<pre><code class="lang-javascript">grunt.registerTask(<span class="string">'build'</span>, [
+    <span class="string">'clean:dist'</span>, <span class="string">'useminPrepare'</span>, <span class="string">'concurrent:dist'</span>, <span class="string">'autoprefixer'</span>, <span class="string">'concat'</span>, <span class="string">'cssmin'</span>,
+    <span class="string">'uglify'</span>, <span class="string">'copy:dist'</span>, <span class="string">'modernizr'</span>, <span class="string">'rev'</span>, <span class="string">'usemin'</span>, <span class="string">'htmlmin'</span>, <span class="string">'writeBuildStamps'</span>
+]);
+<span class="comment">// ...</span>
+grunt.registerTask(<span class="string">'deploy'</span>, <span class="string">'Deploy the sys project'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(target)</span> {</span>
+    <span class="keyword">var</span> targets = [<span class="string">'staging'</span>, <span class="string">'prod'</span>, <span class="string">'angraveprod'</span>];
+    <span class="keyword">if</span> (targets.indexOf(target) === -<span class="number">1</span>) {
+        grunt.log.error(<span class="string">'Please specify a valid target. Valid targets are: '</span> +
+            targets.join(<span class="string">', '</span>) + <span class="string">'.'</span>);
+        <span class="keyword">return</span> <span class="literal">false</span>;
+    }
+    grunt.config(<span class="string">'buildcontrol'</span>, {
+        options: buildcontrolConfig.options,
+        pages: buildcontrolConfig[target]
+    });
+    grunt.task.run(<span class="string">'buildcontrol:pages'</span>);
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-14">
+    <section class="slide-content"><h3 id="case-study-system-programming-learning-environment">Case study: System Programming Learning Environment</h3>
+<h4 id="design-decisions-libraries-vs-frameworks">Design decisions: Libraries vs Frameworks</h4>
+<ul>
+<li>Favor small libraries over complete &quot;all-in-one&quot; frameworks like AngularJS</li>
+<li>Frameworks have a high learning curve and impose a certain way of writing code</li>
+<li>Difficult to implement features not available in or compatible with the framework</li>
+<li>Counter argument: <a href="https://github.com/cs-education/sysbuild/issues/102">Discussion about an AngularJS port</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-15">
     <section class="slide-content"><h3 id="resources">Resources</h3>
 <ul>
 <li><a href="http://rmurphey.com/blog/2015/03/23/a-baseline-for-front-end-developers-2015/">A Baseline for Front-End [JS] Developers: 2015</a></li>
@@ -578,7 +629,7 @@ and classes in different frameworks to see how it feels using it first-hand</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><div class="author">
   <h1 class="name">Neelabh Gupta</h1>
     <h3 class="twitter">

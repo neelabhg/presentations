@@ -9,12 +9,13 @@ theme: ../cleaver-theme
 
 -- title-slide
 
-# Front-end Development
+# Starting Front-end Development
 ## Tools and frameworks for creating modern web applications
 ### ACM @ UIUC - WebMonkeys
 
 #### Neelabh Gupta
 ##### October 19, 2015
+##### (slides revised November 4, 2015)
 
 <img src="../cleaver-theme/acm-uiuc-logo.png" />
 <img src="../cleaver-theme/acm-webmonkeys-logo.png" />
@@ -53,22 +54,50 @@ theme: ../cleaver-theme
 * Styling: CSS (Sass, LESS)
 * Scripting: JavaScript (CoffeeScript, TypeScript)
 * Tools (building, testing, deploying)
+* Libraries (MVC frameworks, DOM libraries)
 
 --
 
-### Frameworks
+### Why use MV* frameworks?
 * Help manage complexity and write organized, maintainable, reusable code
 * Take care of common concerns (DOM, templates, routing, etc)
 * Provide best-practices in the form of conventions
-* MVC (or MVVM or MV*) helps prevent [this](https://github.com/neelabhg/spelling-bee-phonegap/blob/master/www/js/app.js)
+
+--
+
+### Why use MV* frameworks?
+MVC (or MVVM or MV*) helps prevent [this](https://github.com/neelabhg/spelling-bee-phonegap/blob/master/www/js/app.js):
+```javascript
+$("#checkAnswerButton").off("click").on("click", function () {
+    numTries += 1;
+    if ($("#wordInput").val().toLowerCase() === word.word.toLowerCase()) {//correct answer
+        results['correctCount'] += 1;
+        results.words.push({ word: word.word, result: 'correct' });
+        $("#dialogHeading").text("Correct answer!");
+        $("#correctWord").text(word.word);
+        $("#wordDonePopup").popup("open");
+    } else {//incorrect answer
+        $("#incorrectAnswerMsg").show();
+        if (numTries === settings.maxTries) {//max number of tries reached
+            results['incorrectCount'] += 1;
+            results.words.push({ word: word.word, result: 'incorrect' });
+            $("#dialogHeading").text("Incorrect answer");
+            $("#correctWord").text(word.word);
+            $("#wordDonePopup").popup("open");
+        } else {
+            $("#numTriesDisplay").text(numTries);
+        }
+    }
+});
+```
 
 --
 
 ### TodoMVC
 
-* http://todomvc.com/ and https://github.com/tastejs/todomvc
+* [todomvc.com](http://todomvc.com/) and [github.com/tastejs/todomvc](https://github.com/tastejs/todomvc)
 * The same Todo application implemented in most of the popular JavaScript MV* frameworks
-* Can be used study the syntax for defining models, views, controllers
+* Can be used to study the syntax for defining models, views, controllers
   and classes in different frameworks to see how it feels using it first-hand
 * Helps find what well-developed frameworks match your mental model of application architecture
 * Not meant to showcase all features of a given framework
@@ -77,19 +106,22 @@ theme: ../cleaver-theme
 
 ### Case study: System Programming Learning Environment
 
-* A browser-based systems programming learning tool for CS 241 and possibly other uses
+* A browser-based system programming learning tool used in CS 241
 * Open source; Uses [GitHub](https://github.com/cs-education/sysbuild) for collaboration
 * Purely client-side; hosted on [GitHub Pages](https://pages.github.com/)
 * Written in JavaScript (ES5, porting to ES6 soon)
 * Uses HTML, CSS and [Sass](http://sass-lang.com/)
 * [Live demo](http://cs-education.github.io/sys/)
 
+<small>(Note: The project is under active development. This talk refers to the project upto
+[this commit](https://github.com/cs-education/sysbuild/tree/2eb401a7c28414c2799426f689b4dbe5ef4fe784)).</small>
+
 --
 
 ### Case study: System Programming Learning Environment
 #### Architecture
 
-![LIAB_architecture_overview](LIAB_architecture_overview_small.png)
+<img src="LIAB_architecture_overview.png" width="60%" style="display: block; margin: auto" />
 
 --
 
@@ -106,21 +138,45 @@ theme: ../cleaver-theme
 ### Case study: System Programming Learning Environment
 #### Tools
 
+* [Yeoman](http://yeoman.io/) - Initial project scaffolding
 * [Bower](http://bower.io/) - Dependency management
 * [Travis CI](https://travis-ci.org/) - Continuous Integration
 * [Grunt](http://gruntjs.com/) - Task runner (building, testing, deploying)
-  ([Gruntfile](https://github.com/cs-education/sysbuild/blob/master/Gruntfile.js))
-* [Yeoman](http://yeoman.io/)
 
 --
 
 ### Case study: System Programming Learning Environment
-#### Libraries vs Frameworks
+#### Tools: [Some Grunt tasks used](https://github.com/cs-education/sysbuild/blob/030ffef85c67285f2ab5e66855aa5f4fb1b88312/Gruntfile.js)
+```javascript
+grunt.registerTask('build', [
+    'clean:dist', 'useminPrepare', 'concurrent:dist', 'autoprefixer', 'concat', 'cssmin',
+    'uglify', 'copy:dist', 'modernizr', 'rev', 'usemin', 'htmlmin', 'writeBuildStamps'
+]);
+// ...
+grunt.registerTask('deploy', 'Deploy the sys project', function (target) {
+    var targets = ['staging', 'prod', 'angraveprod'];
+    if (targets.indexOf(target) === -1) {
+        grunt.log.error('Please specify a valid target. Valid targets are: ' +
+            targets.join(', ') + '.');
+        return false;
+    }
+    grunt.config('buildcontrol', {
+        options: buildcontrolConfig.options,
+        pages: buildcontrolConfig[target]
+    });
+    grunt.task.run('buildcontrol:pages');
+});
+```
+
+--
+
+### Case study: System Programming Learning Environment
+#### Design decisions: Libraries vs Frameworks
 
 * Favor small libraries over complete "all-in-one" frameworks like AngularJS
 * Frameworks have a high learning curve and impose a certain way of writing code
 * Difficult to implement features not available in or compatible with the framework
-* [Discussion about an AngularJS port](https://github.com/cs-education/sysbuild/issues/102)
+* Counter argument: [Discussion about an AngularJS port](https://github.com/cs-education/sysbuild/issues/102)
 
 --
 
