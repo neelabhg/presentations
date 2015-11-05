@@ -11,7 +11,7 @@ Notes for the _first_ slide!
 # Issues with Issues
 
 https://github.com/cs-education/sysbuild/issues
-![sysbuild_issues](sysbuild_issues.png)
+.center[![sysbuild_issues](sysbuild_issues.png)]
 
 ---
 
