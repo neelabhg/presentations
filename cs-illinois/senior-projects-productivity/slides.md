@@ -1,8 +1,18 @@
-class: center, middle
+layout: true
 
-## Methods and tools for productively managing your project
+<div id="footer">
+  <div id="gray-bar"></div>
+  <img src="../common/cs_illinois_logo.png" id="cs-illinois-logo">
+  <img src="../common/illinois_wordmark_horizontal_reverse.png" id="illinois-wordmark">
+</div>
 
-## CS Senior Projects Fall 2015
+---
+
+class: middle
+
+# Methods and tools for productively managing your project
+
+### CS Senior Projects Fall 2015
 
 ### Neelabh Gupta
 October 20, 2015  
@@ -16,7 +26,7 @@ Notes for the _first_ slide!
 
 # Me
 
-* Took Senior Project in 2014 (CS 492 Fall 2014 and CS 494 Spring 2015)
+* Took Senior Projects in 2014 (CS 492 Fall 2014 and CS 494 Spring 2015)
 
 * Worked on Linux-in-a-browser project
 
@@ -37,13 +47,13 @@ about new tools and methodologies I recently found which seem very helpful.
 
 # Issues with Issues
 
-.center[[<img src="sysbuild_issues.png" width="80%">](https://github.com/cs-education/sysbuild/issues)]
+.center[[<img src="sysbuild_issues.png" width="90%">](https://github.com/cs-education/sysbuild/issues)]
 
 ---
 
 # Issues with Issues
 
-[<img src="sysbuild_issues.png" width="60%" align="right">](https://github.com/cs-education/sysbuild/issues)
+[<img src="sysbuild_issues.png" width="65%" align="right">](https://github.com/cs-education/sysbuild/issues)
 
 * Hard to visualize
 
@@ -159,7 +169,7 @@ From [Lifehacker](http://lifehacker.com/productivity-101-a-primer-to-the-getting
 
 ---
 
-# Best of both: Personal Kanban + GTD
+# Best of both &mdash; Personal Kanban + GTD
 
 --
 
