@@ -6,11 +6,32 @@ class: center, middle
 
 ### Neelabh Gupta
 October 20, 2015  
-<small>(slides created November 5, 2015)</small>
+<small>(slides created November 10, 2015)</small>
 
 ???
 
 Notes for the _first_ slide!
+
+---
+
+# Me
+
+* Took Senior Project in 2014 (CS 492 Fall 2014 and CS 494 Spring 2015)
+
+* Worked on Linux-in-a-browser project
+
+# Team
+
+  - 7 members, largest 2014 team on a single project
+
+  - Shipped multiple features
+
+  - Successful collaboration
+
+???
+
+I'm here to share my experience working on and organizing the project, and talk
+about new tools and methodologies I recently found which seem very helpful.
 
 ---
 
@@ -67,12 +88,191 @@ Notes for the _first_ slide!
 ---
 
 # A better system
-* Lets you visualize your work
-* Keeps everyone on the same page
+
+--
+
+* Lets you visualize your project &mdash; a quick glance should ideally show the current status
+
+--
+
+* Keeps everyone on the same page &mdash; every team member knows what they should be doing and what everyone else is doing
+
+--
+
+* Has low overhead in creating tasks, assigning to people, updating progress
+
+--
+
+* Clearly shows what needs to be done, what is being done, and what has been accomplished
+
+--
+
+* Keeps "blocked" tasks separate
 
 ---
 
-# Personal Kanban
+# Productivity System &mdash; [Personal Kanban](http://www.personalkanban.com/pk/personal-kanban-101/)
+"A simple way to visualize and control your work"
 
-[Lifehacker](http://lifehacker.com/productivity-101-how-to-use-personal-kanban-to-visuali-1687948640)
+--
 
+.center[[<img src="lifehacker_personal_kanban.jpg" width="65%">](http://lifehacker.com/productivity-101-how-to-use-personal-kanban-to-visuali-1687948640)]
+
+--
+
+Two main "rules":
+* Visualize Your work
+* Limit Your Work In Progress (WIP)
+
+.right[<small>Image and "rules" source: [Lifehacker](http://lifehacker.com/productivity-101-how-to-use-personal-kanban-to-visuali-1687948640)</small>]
+
+???
+
+Personal Kanban applies to teams as well
+
+---
+
+# Personal Kanban Example
+[CodeMOO (JavaPlayland) 2014](https://seniorprojects.cs.illinois.edu/confluence/display/CM2014/Code+MOO+2014+Home)
+used Trello instead of GitHub:
+
+.center[[<img src="codemoo2014_trello_board.png" width="100%">](https://trello.com/b/u97nlE8v/codemoo)]
+
+---
+
+# Productivity System &mdash; [Getting Things Done](http://gettingthingsdone.com/)
+
+
+.center[[<img src="gtd_in_15_minutes.svg" width="80%">](https://hamberg.no/gtd/)]
+
+.right[<small>Image source: [Hamberg's GTD guide](https://hamberg.no/gtd/). Also see [Lifehacker's GTD primer](http://lifehacker.com/productivity-101-a-primer-to-the-getting-things-done-1551880955)</small>]
+
+???
+
+From [Lifehacker](http://lifehacker.com/productivity-101-a-primer-to-the-getting-things-done-1551880955):
+* Detailed and thorough method for organizing to-dos, priorities, and schedule to make them manageable
+
+* Easy to see what you have on your plate and choose what to work on next
+
+* Strong emphasis on getting your to-dos out of your head and into a system you can refer to.
+  This clears your mind of any mental distractions that will keep you from working efficiently.
+
+---
+
+# Best of both: Personal Kanban + GTD
+
+--
+
+[HuBoard](https://huboard.com/cs-education/sysbuild) newly implemented in Linux-in-a-browser project:
+
+.center[[<img src="sysbuild_huboard.png" width="90%">](https://huboard.com/cs-education/sysbuild)]
+
+--
+
+.right[<small>Also see [The Agile Coach: A brief introduction to kanban &mdash; Atlassian](https://www.atlassian.com/agile/kanban/)</small>]
+
+---
+
+# Tools with Kanban-style boards
+
+* [GitHub collaboration integrations](https://github.com/integrations/feature/collaborate):
+
+  - [HuBoard](https://huboard.com/) (free for public projects)
+
+  - [ZenHub](https://www.zenhub.io/) (free for students and open source projects)
+
+  - [Waffle](https://waffle.io/) (free)
+
+* [Trello](https://trello.com/) (free)
+
+* [Agile boards in Senior Projects JIRA](https://seniorprojects.cs.illinois.edu/jira/secure/RapidStart.jspa)
+
+* Many more:
+
+  - [Curated list of bug and issue trackers](https://github.com/cjbarber/ToolsOfTheTrade#bugissue-tracking)
+
+  - [Curated list of planning and project management tools](https://github.com/cjbarber/ToolsOfTheTrade#planning--project-management)
+
+???
+
+Senior Projects JIRA is obviously free for Senior Projects students.
+
+---
+
+# Communication
+
+--
+
+* Everyone should be involved and on the same page
+
+--
+
+* Replies should be quick(er)
+
+--
+
+* Barrier to communication should be low &mdash; no one should hesitate to ask questions within the team
+
+--
+
+* Email is formal, slow and cluttered (although works fine for communicating with client)
+
+--
+
+* Use group chat
+
+---
+
+# Example
+
+Our team used [GroupMe](https://groupme.com/).
+A [bot](https://github.com/neelabhg/groupme-bot) even notified about
+[Travis CI](https://travis-ci.org/cs-education/sysbuild) build statuses:
+
+.center[<img src="LIAB_groupme_room.png" width="90%">]
+
+---
+
+# Example
+
+[Gitter](https://gitter.im/) chat rooms newly setup for Linux-in-a-browser project.
+
+--
+
+[<img src="sysbuild_gitter_activity.png" width="30%" align="right">](https://gitter.im/cs-education/sysbuild)
+
+* One public chat room for community engagement &mdash; integrated with GitHub, Travis CI and HuBoard
+
+--
+
+
+* Links prominently placed in README:
+[<img src="sysbuild_readme_badges.png" width="60%">](https://github.com/cs-education/sysbuild/blob/master/README.md)
+
+--
+
+* Private chat rooms for each year's Senior Project team
+
+---
+
+# Group communication tools
+
+* [GitHub collaboration integrations](https://github.com/integrations/feature/collaborate):
+
+  - [Slack](https://slack.com/) (free)
+
+  - [Gitter](https://gitter.im/) (free)
+
+* [HipChat](https://www.hipchat.com/) (free)
+
+* Many more:
+
+  - [Curated list of group communication and chat tools](https://github.com/cjbarber/ToolsOfTheTrade#group-communicationchat-tools)
+
+---
+class: center, middle
+
+Neelabh Gupta
+
+[@neelabhg](https://twitter.com/neelabhg)  
+[neelabhgupta.com](http://neelabhgupta.com/)
