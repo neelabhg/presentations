@@ -282,7 +282,9 @@ A [bot](https://github.com/neelabhg/groupme-bot) even notified about
 ---
 class: center, middle
 
-Neelabh Gupta
+<img src="../common/profile_photo.jpg" class="circular-profile-picture">
+
+### Neelabh Gupta
 
 [@neelabhg](https://twitter.com/neelabhg)  
 [neelabhgupta.com](http://neelabhgupta.com/)
