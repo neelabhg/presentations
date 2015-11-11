@@ -18,10 +18,6 @@ class: middle
 October 20, 2015  
 <small>(slides created November 10, 2015)</small>
 
-???
-
-Notes for the _first_ slide!
-
 ---
 
 # Me
@@ -77,18 +73,19 @@ about new tools and methodologies I recently found which seem very helpful.
 
 # What about Milestones?
 
-[<img src="sysbuild_milestone.png" width="100%">](https://github.com/cs-education/sysbuild/milestones)
+.center[[<img src="sysbuild_milestone.png" width="90%">](https://github.com/cs-education/sysbuild/milestones)]
+
 --
 
 * Our team didn't use milestones properly
 
 --
 
-* Semester milestones were too broad
+* Semester milestones were too broad (but useful for TAs and write-ups)
 
 --
 
-* Feature specific milestones would have been too narrow
+* Feature specific milestones would probably have been too narrow
 
 --
 
@@ -180,6 +177,38 @@ From [Lifehacker](http://lifehacker.com/productivity-101-a-primer-to-the-getting
 --
 
 .right[<small>Also see [The Agile Coach: A brief introduction to kanban &mdash; Atlassian](https://www.atlassian.com/agile/kanban/)</small>]
+
+---
+
+# Extra advantages
+
+--
+
+* The task board can be shared with the client, liaison and course staff
+
+--
+
+* Course staff can see the status of a project at a glance
+
+--
+
+  - Shorter (and more productive) weekly progress meetings with course staff
+
+--
+
+* Team members are more accountable
+
+--
+
+* Some people choose to delete completed tasks, but it is recommended to keep a "done" or "shipped" list
+
+--
+
+  - Team accomplishments are clear and visible
+
+--
+
+  - [Seeing your accomplishments will provide a motivation boost](http://lifehacker.com/5960794/keep-your-completed-to-do-lists-on-a-done-wall-to-stay-motivated)
 
 ---
 
